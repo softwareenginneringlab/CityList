@@ -22,14 +22,35 @@ public class CityList {
         cities.add(city);
     }
 
+
     /**
      * This returns a sorted list of cities
      * @return
      *      Return the sorted list of cities
      */
-    public List<City> getCities() {
+    public List<City> getCities(int ck) {
         List<City> cityList = cities;
-        Collections.sort(cityList);
+        if(ck==0)
+        {
+            Collections.sort(cityList);
+        }
+        else
+        {
+            Collections.sort(cityList,new CustomComparator());
+        }
         return cityList;
     }
+    public void delete(City city)
+    {
+        if(!cities.contains(city))
+        {
+            throw new IllegalArgumentException();
+        }
+        cities.remove(city);
+    }
+    public int count()
+    {
+        return cities.size();
+    }
 }
+
